@@ -33,7 +33,7 @@ char *getline(void)
 		if (index >= bufsize - 1)
 		{
 			bufsize += BUFFER_SIZE;
-			temp = (char *)realloc(buffer, bufsie);
+			temp = (char *)realloc(buffer, bufsize);
 			if (temp == NULL)
 			{
 				perror("In getline, realloc");

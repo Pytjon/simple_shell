@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <string.h>
-#include <unistd.>
+#include <unistd.h>
 
 #define MAX_ARGS 64
 #define BUFFER_SIZE 1024
