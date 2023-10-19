@@ -23,7 +23,7 @@ int string_to_int(const char *str)
 		sign = -1;
 		i++;
 	}
-	for (; str[i] != '\0', i++)
+	for (; str[i] != '\0'; i++)
 	{
 		if (str[i] < '0' || str[i] > '9')
 		{

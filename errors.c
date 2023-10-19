@@ -1,5 +1,4 @@
 #include "shell.h"
-#include <unistd.h>
 
 /**
  * print_error_message - function that prints  err msg to standard err stream

@@ -3,10 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/waits.h>
 #include <sys/stat.h>
 #include <string.h>
-#include <unistd.>
+#include <unistd.h>
 
 #define MAX_ARGS 64
 #define BUFFER_SIZE 1024
@@ -22,11 +21,11 @@ int _strncmp(const char *str1, const char *str2, int  n);
 int _strcmp(const char *s1, const char *s2);
 char *_strcat(char *destination, const char *source);
 char *complete_path(char *command);
-char get_environment_variable(const char *var_name);
+char *get_environment_variable(const char *var_name);
 void print_error_message(const char *program_name, const char *message);
 void handle_builtin(char **args, char *line);
 int check_builtin(char *command);
-char *getline(void);
+char *readline(void);
 int string_to_int(const char *str);
 void close_program(char **args, char *line);
 void parse_args(char *line, char **args);

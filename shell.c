@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <signal.h>
 
 /**
  * main - Entry point for a simple shell
@@ -21,7 +22,7 @@ int main(__attribute__((unused))int ac, char **args, char **envp)
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$", 2);
 		/*Read a line of input from the user*/
-		line = getline();
+		line = readline();
 		/*Tokenize the input line into arguments*/
 		args = tokenizer(line);
 		/*Check if a command was provided*/
@@ -77,9 +78,9 @@ void wait_for_child_process(pid_t pid)
 	pid_t wpid;
 
 	do {
-		wpid = waitpid(pid, &status, WUNTRACED);
+		wpid = wait(&status);
 	}
-	while (wpid != pid && !WIFEXITED(status) && !WIFSIGNALED(status);
+	while (wpid != pid && !WIFEXITED(status) && !WIFSIGNALED(status));
 }
 
 /**
