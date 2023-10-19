@@ -13,11 +13,11 @@ char *_strcheck(const char *str, char c)
 	while (*str)
 	{
 		if (*str == c)
-			return (str);
+			return (char *)str;
 		str++;
 	}
 	if (!c)
-		return (str);
+		return (NULL);
 	return (0);
 }
 

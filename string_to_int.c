@@ -10,13 +10,13 @@ int string_to_int(const char *str)
 {
 	int answer = 0;
 	int sign = 1;
+	int i = 0;
 
 	if (str == NULL || str[0] == '\0')
 	{
 		/*handle empty or NULL string as an error*/
 		return (0);
 	}
-	int i = 0;
 
 	if (str[0] == '-')
 	{

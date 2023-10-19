@@ -18,7 +18,7 @@ char *get_environment_variable(const char *var_name)
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		if (_strncmp(environ[i], var_name, name_length) == 0
-				&& environ[i][name_length] == ' = ')
+				&& environ[i][name_length] == '=')
 			return (environ[i] + name_length + 1);
 	}
 	return (NULL);

@@ -78,7 +78,7 @@ void wait_for_child_process(pid_t pid)
 	pid_t wpid;
 
 	do {
-		wpid = wait(&status);
+		wpid = waitpid(pid, &status, WUNTRACED);
 	}
 	while (wpid != pid && !WIFEXITED(status) && !WIFSIGNALED(status));
 }
