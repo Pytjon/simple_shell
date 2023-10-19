@@ -21,7 +21,7 @@ int _strncmp(const char *str1, const char *str2, int  n);
 int _strcmp(const char *s1, const char *s2);
 char *_strcat(char *destination, const char *source);
 char *complete_path(char *command);
-char get_environment_variable(const char *var_name);
+char *get_environment_variable(const char *var_name);
 void print_error_message(const char *program_name, const char *message);
 void handle_builtin(char **args, char *line);
 int check_builtin(char *command);
