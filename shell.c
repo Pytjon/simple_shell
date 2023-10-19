@@ -21,7 +21,7 @@ int main(__attribute__((unused))int ac, char **args, char **envp)
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$", 2);
 		/*Read a line of input from the user*/
-		line = getline();
+		line = readline();
 		/*Tokenize the input line into arguments*/
 		args = tokenizer(line);
 		/*Check if a command was provided*/

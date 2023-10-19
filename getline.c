@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * getline - read characters from the command line
+ * readline - read characters from the command line
  *
  * Return: a pointer to the memory address where the read characters are stored
  */
-char *getline(void)
+char *readline(void)
 {
 	size_t bufsize = BUFFER_SIZE;
 	size_t index = 0;
@@ -14,7 +14,7 @@ char *getline(void)
 
 	if (buffer == NULL)
 	{
-		perror("In getline, malloc");
+		perror("In readline, malloc");
 		exit(EXIT_FAILURE);
 	}
 	while (1)
@@ -36,7 +36,7 @@ char *getline(void)
 			temp = (char *)realloc(buffer, bufsize);
 			if (temp == NULL)
 			{
-				perror("In getline, realloc");
+				perror("In readline, realloc");
 				free(buffer);
 				exit(EXIT_FAILURE);
 			}

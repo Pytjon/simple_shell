@@ -25,7 +25,7 @@ char get_environment_variable(const char *var_name);
 void print_error_message(const char *program_name, const char *message);
 void handle_builtin(char **args, char *line);
 int check_builtin(char *command);
-char *getline(void);
+char *readline(void);
 int string_to_int(const char *str);
 void close_program(char **args, char *line);
 void parse_args(char *line, char **args);
