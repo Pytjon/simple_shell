@@ -1,42 +1,62 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/stat.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
-#include <stddef.h>
-#include <limits.h>
+#include <sys/stat.h>
+#include <time.h>
+#include <stdbool.h>
 
-
-#define MAX_ARGS 64
-#define BUFFER_SIZE 1024
-
+/* environment variables */
 extern char **environ;
+extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 
-void wait_for_child_process(pid_t pid);
-char **tokenizer(char *line);
-char *_strcheck(const char *str, char c);
-char *_strncat(char *destination, char *source, int n);
-int _strlen(const char *s);
-int _strncmp(const char *str1, const char *str2, int  n);
-int _strcmp(const char *s1, const char *s2);
-char *_strcat(char *destination, const char *source);
-char *complete_path(char *command);
-char *get_environment_variable(const char *var_name);
-void print_error_message(const char *program_name, const char *message);
-void handle_builtin(char **args, char *line);
-int check_builtin(char *command);
-char *readline(void);
-int string_to_int(const char *str);
-void close_program(char **args, char *line);
-void parse_args(char *line, char **args);
+/* handle built ins */
+int check_builtin(char **command_token, char *input_line);
+void display_prompt(void);
+void handle_signal(int signal_number);
+char **tokenize_input(char *input_line);
+char *validate_path(char **path_tokens, char *command);
+char *append_path(char *path, char *command);
+int handle_builtin_commands(char **command_tokens, char *input_line);
+void handle_exit_command(char **command_tokens, char *input_line);
 
+void print_environment(void);
 
-#endif
+/* string handlers */
+int _strcmp(char *s1, char *s2);
+int _strlen(char *s);
+int _strncmp(char *s1, char *s2, int n);
+char *_strdup(char *s);
+char *_strchr(char *s, char c);
+
+void execute_command(char *command_path, char **command_args);
+char *find_path(void);
+
+/* helper function for efficient free */
+void free_memory_buffers(char **buffers);
+
+struct builtin
+{
+	char *env;
+	char *exit;
+} builtin;
+
+struct info
+{
+	int final_exit;
+	int ln_count;
+} info;
+
+struct flags
+{
+	bool interactive;
+} flags;
+
+#endif /* SHELL_H */
+
