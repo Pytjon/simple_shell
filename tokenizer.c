@@ -11,10 +11,11 @@ char **tokenizer(char *line)
 	int bufsize = MAX_ARGS;
 	int index = 0;
 	char *token, **tokens;
+	char **temp;
 
 	if (line == NULL)
 		exit(EXIT_FAILURE);
-	tokens = malloc(bufsize * sizeof(char *));
+	tokens = (char **) malloc(bufsize * sizeof(char *));
 	if (!tokens)
 	{
 		perror("In Tokenize, Malloc");
@@ -30,15 +31,18 @@ char **tokenizer(char *line)
 		if (index >= bufsize)
 		{
 			bufsize += MAX_ARGS;
-			tokens = realloc(tokens, bufsize * sizeof(char *));
-			if (!tokens)
+			temp  = (char **)realloc(tokens, bufsize * sizeof(char *));
+
+			if (!temp)
 			{
 				perror("In Tokenize, Realloc");
 				free(line);
 				exit(EXIT_FAILURE);
 			}
+			tokens = temp;
 		}
 	}
 	tokens[index] = NULL;
+
 	return (tokens);
 }

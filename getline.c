@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * readline - read characters from the command line
+ * getline - read characters from the command line
  *
  * Return: a pointer to the memory address where the read characters are stored
  */
@@ -48,6 +48,6 @@ char *readline(void)
 			free(buffer);
 			return (NULL);
 		}
-		buffer[index] = '\0';
-		return (buffer);
+	buffer[index] = '\0';
+	return (buffer);
 }

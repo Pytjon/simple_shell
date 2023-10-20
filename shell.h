@@ -8,6 +8,12 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <stddef.h>
+#include <limits.h>
+
 
 #define MAX_ARGS 64
 #define BUFFER_SIZE 1024

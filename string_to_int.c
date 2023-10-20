@@ -30,6 +30,11 @@ int string_to_int(const char *str)
 			/*non-digit character encountered, return 0 as an error*/
 			return (0);
 		}
+		if (answer > (INT_MAX - (str[i] - '0')) / 10)
+		{ /* Integer overflow will occur if we add the next digit */
+			return (0);  /* Or another appropriate error code */
+		}
+
 		/*update the result by multiplying by 10 and assing the digit*/
 		answer = answer * 10 + (str[i] - '0');
 	}

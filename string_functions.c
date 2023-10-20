@@ -10,15 +10,25 @@
 char *_strcat(char *destination, const char *source)
 {
 	char *temp = destination;
+	size_t destination_size;
+	size_t source_size;
 
 	while (*temp != '\0')
 	{
 		temp++;
 	}
 
+	destination_size = _strlen(destination);
+	source_size = _strlen(source);
+
+	if (destination_size + source_size > BUFFER_SIZE)
+	{
+		/*handling error*/
+		return (NULL);
+	}
 	while (*source != '\0')
 	{
-		*temp = *source;
+	*temp = *source;
 		temp++;
 		source++;
 	}
@@ -69,7 +79,10 @@ int _strncmp(const char *str1, const char *str2, int  n)
 		if (str1[i] != str2[i])
 			return (str1[i] - str2[i]);
 	}
+	if (i == n)
 	return (0);
+
+	return (str1[i] - str2[i]);
 
 }
 
@@ -109,7 +122,7 @@ char *_strncat(char *destination, char *source, int n)
 
 	for (i = 0; destination[i] != '\0'; i++)
 	{
-		continue;
+		/* No need to countinue */
 	}
 	for (j = 0; source[j] != '\0' && j < n; j++)
 	{
